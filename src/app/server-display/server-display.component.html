@@ -2,7 +2,12 @@
     <div class="col-xs-12">
       <div
         class="panel panel-default">
-        <div class="panel-heading">{{ newItem.name }}</div>
+         <ng-content></ng-content>
+        <div class="panel-heading">{{ newItem.name }}
+          <!--<ng-content> </ng-content> is used as a hook to place the content between
+           <app-cockpit> and </app-cockpit> in the app.components.html
+           It is a dirctive with tag like selector-->
+        </div>
         <div class="panel-body">
           <p>
             <strong *ngIf="newItem.type === 'server'"style="color: red">{{ newItem.content }}</strong>
