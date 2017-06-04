@@ -13,10 +13,15 @@ export class CockpitComponent implements OnInit {
   @Output() serverAdd = new EventEmitter<{serverName: string, serverDetails: string}>();
   @Output() blueprintAdd = new EventEmitter<{blueprintName: string, blueprintDetails: string}>();
 
+  //@Output('Alias') decorator is used to make the property able to emit to parent component.
+  //EventEmitter is use dto make an event {like (click) event} 
+
   constructor() { }
 
   onAddServer() {
     this.serverAdd.emit({serverName: this.newName, serverDetails: this.newDetails});
+    //triggers the event and emit the data provided
+    //(serverAdd) = "actionMethod($event)" in .html file to use it. see the app.component.html file
   }
 
   onAddBlueprint() {
