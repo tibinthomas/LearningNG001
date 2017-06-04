@@ -18,13 +18,15 @@ export class CockpitComponent implements OnInit {
 
   constructor() { }
 
-  onAddServer() {
+  onAddServer(details: string) {
+    this.newDetails = details;
     this.serverAdd.emit({serverName: this.newName, serverDetails: this.newDetails});
     //triggers the event and emit the data provided
     //(serverAdd) = "actionMethod($event)" in .html file to use it. see the app.component.html file
   }
 
-  onAddBlueprint() {
+  onAddBlueprint(details: string) {
+        this.newDetails = details;
     this.blueprintAdd.emit({blueprintName: this.newName, blueprintDetails: this.newDetails});
  }
 

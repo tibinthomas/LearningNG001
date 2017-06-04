@@ -4,13 +4,15 @@
       <label>Server Name</label>
       <input type="text" class="form-control" [(ngModel)]="newName">
       <label>Server Content</label>
-      <input type="text" class="form-control" [(ngModel)]="newDetails">
+      <!--<input type="text" class="form-control" [(ngModel)]="newDetails">-->
+      <input type="text" class="form-control" #details>
+      <!--returns the full html element to the place where we call details-->
       <br>
       <button
         class="btn btn-primary"
-        (click)="onAddServer()">Add Server</button>
+        (click)="onAddServer(details.value)">Add Server</button>
       <button
         class="btn btn-primary"
-        (click)="onAddBlueprint()">Add Server Blueprint</button>
+        (click)="onAddBlueprint(details.value)">Add Server Blueprint</button>
     </div>
 </div>
