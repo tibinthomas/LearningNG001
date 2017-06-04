@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -7,8 +7,11 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class CockpitComponent implements OnInit {
 
-  newName = '';
+  //newName = '';
   newDetails = '';
+
+  @ViewChild('name') newName: ElementRef;  // here 'name' is the #name local ref in the html
+  //Don't assingn value to newName.. Doing so is a bad practice of accessing DOM elements
 
   @Output() serverAdd = new EventEmitter<{serverName: string, serverDetails: string}>();
   @Output() blueprintAdd = new EventEmitter<{blueprintName: string, blueprintDetails: string}>();
@@ -20,14 +23,14 @@ export class CockpitComponent implements OnInit {
 
   onAddServer(details: string) {
     this.newDetails = details;
-    this.serverAdd.emit({serverName: this.newName, serverDetails: this.newDetails});
+    this.serverAdd.emit({serverName: this.newName.nativeElement.value, serverDetails: this.newDetails});
     //triggers the event and emit the data provided
     //(serverAdd) = "actionMethod($event)" in .html file to use it. see the app.component.html file
   }
 
   onAddBlueprint(details: string) {
         this.newDetails = details;
-    this.blueprintAdd.emit({blueprintName: this.newName, blueprintDetails: this.newDetails});
+    this.blueprintAdd.emit({blueprintName: this.newName.nativeElement.value, blueprintDetails: this.newDetails});
  }
 
   ngOnInit() {
